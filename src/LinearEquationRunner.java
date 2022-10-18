@@ -1,5 +1,6 @@
-public class Main {
+public class LinearEquationRunner {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+    LinearEquation temp = new LinearEquation("(1,-7)","(6,2)");
     }
 }
