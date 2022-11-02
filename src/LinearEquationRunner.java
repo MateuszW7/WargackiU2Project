@@ -1,31 +1,34 @@
 import java.util.Scanner;
 public class LinearEquationRunner {
     public static void main(String[] args) {
-    //user input
-    Scanner input = new Scanner(System.in);
-    System.out.println("Welcome!");
-    System.out.println("Enter coordinate 1: ");
-    String cords1 = input.nextLine();
-    int x1 = Integer.parseInt(cords1.substring(0, cords1.indexOf(",")).replace("(", " ").trim());
-    int y1 = Integer.parseInt(cords1.substring(cords1.indexOf(",")).replace(")", " ").replace(",", " ").trim());
-    boolean repeat = true;
-    while (repeat) {
+        //Welcome!
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome!");
+        //this chunk parses out the parentheses and spaces to easily find the x and y values
+        System.out.println("Enter coordinate 1: ");
+        String cords1 = input.nextLine();
+        int x1 = Integer.parseInt(cords1.substring(0, cords1.indexOf(",")).replace("(", " ").trim());
+        int y1 = Integer.parseInt(cords1.substring(cords1.indexOf(",")).replace(")", " ").replace(",", " ").trim());
+        //same as before but instead for the second coordinate
         System.out.println("Enter coordinate 2: ");
-        String tempCords2 = input.nextLine();
-        int tempX2 = Integer.parseInt(tempCords2.substring(0, tempCords2.indexOf(",")).replace("(", " ").trim());
-        if (tempX2 = x1){
-            System.out.println("");
+        String cords2 = input.nextLine();
+        int x2 = Integer.parseInt(cords2.substring(0, cords2.indexOf(",")).replace("(", " ").trim());
+        int y2 = Integer.parseInt(cords2.substring(cords2.indexOf(",")).replace(")", " ").replace(",", " ").trim());
+
+        //this prints if the line is undefined
+        if (x2 == x1) {
+            System.out.println("You have entered 2 points of an undefined line. Your line is x = " + x1);
+
+        //and this runs if it is a defined line
+        } else {
+            LinearEquation line = new LinearEquation(x1,y1,x2,y2);
+            //prints all info using the lineInfo() method
+            System.out.println(line.lineInfo());
+
+            //this finds another point on the line as per user input
+            System.out.println("Please enter an x value: ");
+            Double xTest = input.nextDouble();
+            System.out.println("The point on this line is: " + line.coordinateForX(xTest));
         }
     }
-
-    LinearEquation temp = new LinearEquation("(1,-5)","(17,21)");
-    System.out.println(temp.distance());
-    System.out.println(temp.slope());
-    System.out.println(temp.yIntercept());
-    }
 }
-
-
-
-                x2 = Integer.parseInt(cords2.substring(0, cords2.indexOf(",")).replace("(", " ").trim());
-                y2 = Integer.parseInt(cords2.substring(cords2.indexOf(",")).replace(")", " ").replace(",", " ").trim());
